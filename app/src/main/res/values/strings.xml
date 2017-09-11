@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Daily-Agenda</string>
+    <string name="home_button1">Ich</string>
+    <string name="home_button2">Gruppen</string>
+    <string name="create_group">Gruppe erstellen</string>
+    <string name="notes">Notizen</string>
+    <string name="calendar">Kalender</string>
+    <string name="fridge">Kühlschrank</string>
+    <string name="finances">Finanzen</string>
+    <string name="map">Karte</string>
+    <string name="createGroup_text">Neue Gruppe erstellen</string>
+    <string name="createGroup_name">Gruppenname</string>
+</resources>
