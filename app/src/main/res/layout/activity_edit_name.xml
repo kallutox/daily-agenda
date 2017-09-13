@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.ksk.daily_agenda.CreateGroup">
     <TextView
+        android:id="@+id/info_text_nameEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="@string/createGroup_text"
-        android:textSize="20dp"/>
+        android:text="@string/create_name"
+        android:textSize="16dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,28 +21,23 @@
         android:orientation="vertical"
         android:weightSum="1">
         <EditText
-            android:id="@+id/createGroup_name"
+            android:id="@+id/name_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/createGroup_name"/>
-        <EditText
-            android:layout_marginTop="15dp"
-            android:id="@+id/add_user_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_user_group"/>
+            android:hint="@string/create_name_hint"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom">
+
             <Button
-                android:id="@+id/createGroup_finish"
+                android:id="@+id/set_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/DAcolor"
                 android:textColor="@color/white"
-                android:text="@string/create_group"
+                android:text="@string/set_Name"
                 android:layout_marginBottom="10dp" />
         </LinearLayout>
     </LinearLayout>

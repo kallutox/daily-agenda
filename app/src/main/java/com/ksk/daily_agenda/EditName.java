@@ -1,14 +1,13 @@
 package com.ksk.daily_agenda;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -17,54 +16,53 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class CreateGroup extends AppCompatActivity {
-    EditText groupName;
-    EditText addUser;
-    Button createGroup;
-    String gName;
-    String member;
-    SharedPreferences sP;
-    private boolean isRegistered = false;
+public class EditName extends AppCompatActivity {
+    public static final String PROFILENAME_CODE = "profilename_code";
+    public static final String PROFILEID_CODE = "profileid_code";
+    TextView informationText;
+    EditText nameEdit;
+    Button setName;
+    String name;
+    boolean isRegistered = false;
     private boolean checking = false;
-    public static final String NAME_EXTRA = "groupName";
+    private long ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_group);
+        setContentView(R.layout.activity_edit_name);
         setupUI();
     }
 
     private void setupUI(){
-        sP = getPreferences(Context.MODE_PRIVATE);
-        groupName = (EditText) findViewById(R.id.createGroup_name);
-        createGroup = (Button) findViewById(R.id.createGroup_finish);
-        addUser = (EditText) findViewById(R.id.add_user_group);
-        createGroup.setOnClickListener(new View.OnClickListener() {
+        informationText = (TextView) findViewById(R.id.info_text_nameEdit);
+        nameEdit = (EditText) findViewById(R.id.name_edit);
+        setName = (Button) findViewById(R.id.set_name);
+        setName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(checking) return;
-                gName = groupName.getText().toString();
-                member = addUser.getText().toString();
-                if(gName.matches("^(([A-Z]|[a-z]|[0-9]){3,20})")) {
-                    new GroupTest().execute();
+                name = nameEdit.getText().toString();
+                if(name.matches("^(([A-Z]|[a-z]|[0-9]){3,20})")) {
+                    new NameTest().execute();
                 }
                 else {
-                    groupName.setHint("Bitte Gruppennamen eingeben!");
-                    groupName.setHintTextColor(getResources().getColor(R.color.red));
+                    nameEdit.setBackgroundColor(getResources().getColor(R.color.red));
                 }
             }
         });
     }
 
-    private void proceedToGroups(){
-        Intent intent = new Intent(getApplicationContext(),Groups.class);
-        intent.putExtra(NAME_EXTRA,gName);
-        setResult(Groups.REQUEST_CODE, intent);
+    private void proceedToHome(){
+        Intent intent = new Intent(getApplicationContext(), Home.class);
+        intent.putExtra(PROFILENAME_CODE,name);
+        intent.putExtra(PROFILEID_CODE, ID);
+        setResult(Home.REQUEST_CODE,intent);
+        Toast.makeText(getApplicationContext(), "Register complete", Toast.LENGTH_LONG).show();
         finish();
     }
 
-    private class GroupTest extends AsyncTask {
+    private class NameTest extends AsyncTask{
 
         private Socket socket;
         private BufferedReader in;
@@ -77,13 +75,13 @@ public class CreateGroup extends AppCompatActivity {
                 socket = new Socket(InetAddress.getByName(getResources().getString(R.string.host_name)), 18712);
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream());
-                out.println("login " + Home.ID);
-                out.flush();
-                out.println("createGroup " +gName+" "+member);
+                out.println("new " + name);
                 out.flush();
                 String answer = in.readLine();
-                System.out.println(answer);
-                isRegistered = answer.trim().equals("ok");
+                isRegistered = answer.startsWith("true");
+                if(isRegistered) {
+                    ID = Long.parseLong(answer.substring(5));
+                }
                 out.close();
                 in.close();
                 socket.close();
@@ -104,7 +102,7 @@ public class CreateGroup extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        proceedToGroups();
+                        proceedToHome();
                     }
                 });
             }
