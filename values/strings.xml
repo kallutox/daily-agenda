@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Daily Agenda</string>
+    <string name="header_notes">Notes</string>
+    <string name="add_note_hint">New Task</string>
+    <string name="set_date_hint">Set Date</string>
+    <string name="add_note_button_confirm">ADD</string>
+    <string name="sort_by_date">Sort by Date</string>
+</resources>

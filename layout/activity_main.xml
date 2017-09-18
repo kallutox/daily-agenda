@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/headerBlue"
+        android:gravity="center"
+        android:padding="10dp"
+        android:paddingBottom="16dp"
+        android:text="@string/header_notes"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/new_task_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightBlue"
+        android:hint="@string/add_note_hint"
+        android:padding="10dp"
+        android:maxLines="1"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/hintColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightBlue"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+
+        <EditText
+            android:id="@+id/set_date_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:focusable="false"
+            android:hint="@string/set_date_hint"
+            android:inputType="date"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/hintColor" />
+
+        <Button
+            android:id="@+id/add_note_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:text="@string/add_note_button_confirm" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/todo_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:padding="10dp" />
+
+</LinearLayout>
