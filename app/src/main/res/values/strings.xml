@@ -1,0 +1,37 @@
+<resources>
+    <string name="host_name">dipselmedia.net</string>
+
+    <string name="app_name">Daily-Agenda</string>
+    <string name="home_button1">Ich</string>
+    <string name="home_button2">Gruppen</string>
+    <string name="create_group">Gruppe erstellen</string>
+    <string name="notes">Notizen</string>
+    <string name="calendar">Kalender</string>
+    <string name="fridge">Kühlschrank</string>
+    <string name="finances">Finanzen</string>
+    <string name="map">Karte</string>
+    <string name="createGroup_text">Neue Gruppe erstellen</string>
+    <string name="createGroup_name">Gruppenname</string>
+    <string name="increase">+</string>
+    <string name="decrease">-</string>
+
+    <string name="settings_init">wasInitialized</string>
+    <string name="settings_ID">user_ID</string>
+    <string name="settings_name">user_name</string>
+
+    <string name="create_name">Bitte gewünschten Profilnamen eingeben</string>
+    <string name="create_name_hint">Profilnamen eingeben...</string>
+    <string name="create_name_availability">Dieser Name ist vergeben!</string>
+    <string name="set_Name">Diesen Namen verwenden</string>
+
+    <string name="add_user_group">Nutzer hinzufügen</string>
+
+    <string name="finances_budget_text">Dein aktuelles Budget:</string>
+    <string name="finances_budget_default">00,0</string>
+    <string name="finances_revenue_text">Neuer Betrag:</string>
+    <string name="finances_revenue_default">000,00</string>
+    <string name="finances_button_add">Hinzufügen</string>
+    <string name="finances_button_withdraw">Abziehen</string>
+    <string name="finances_last_revenues_text">Deine letzten Umsätze:</string>
+
+</resources>
