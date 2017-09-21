@@ -24,6 +24,10 @@
         <activity android:name=".GroupActivity" />
         <activity android:name=".FridgeMe" />
         <activity android:name=".EditName" />
+        <activity android:name=".Votings" />
+        <activity android:name=".CreateVoting" />
+        <activity android:name=".Vote" />
+        <activity android:name=".Finances"/>
     </application>
 
 </manifest>

@@ -66,17 +66,13 @@ public class CreateGroup extends AppCompatActivity {
 
     private class GroupTest extends AsyncTask {
 
-        private Socket socket;
-        private BufferedReader in;
-        private PrintWriter out;
-
         @Override
         protected Object doInBackground(Object... params) {
             checking = true;
             try {
-                socket = new Socket(InetAddress.getByName(getResources().getString(R.string.host_name)), 18712);
-                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                out = new PrintWriter(socket.getOutputStream());
+                Socket socket = new Socket(InetAddress.getByName(getResources().getString(R.string.host_name)), 18712);
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                PrintWriter out = new PrintWriter(socket.getOutputStream());
                 out.println("login " + Home.ID);
                 out.flush();
                 out.println("createGroup " +gName+" "+member);

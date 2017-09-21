@@ -37,7 +37,7 @@
             tools:layout_editor_absoluteX="8dp">
 
             <Button
-                android:id="@+id/me_notes"
+                android:id="@+id/group_notes"
                 android:textColor="@color/white"
                 android:background="@color/DAcolor"
                 android:layout_width="match_parent"
@@ -53,13 +53,13 @@
             tools:layout_editor_absoluteX="8dp">
 
             <Button
-                android:id="@+id/me_calendar"
+                android:id="@+id/group_voting"
                 android:textColor="@color/white"
                 android:background="@color/DAcolor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/calendar" />
+                android:text="@string/voting" />
 
         </LinearLayout>
         <LinearLayout
@@ -70,7 +70,7 @@
             tools:layout_editor_absoluteX="8dp">
 
             <Button
-                android:id="@+id/me_fridge"
+                android:id="@+id/group_fridge"
                 android:textColor="@color/white"
                 android:background="@color/DAcolor"
                 android:layout_width="match_parent"
@@ -87,7 +87,7 @@
             tools:layout_editor_absoluteX="8dp">
 
             <Button
-                android:id="@+id/me_finances"
+                android:id="@+id/group_finances"
                 android:textColor="@color/white"
                 android:background="@color/DAcolor"
                 android:layout_width="match_parent"
@@ -104,7 +104,7 @@
             tools:layout_editor_absoluteX="8dp">
 
             <Button
-                android:id="@+id/me_map"
+                android:id="@+id/group_map"
                 android:textColor="@color/white"
                 android:background="@color/DAcolor"
                 android:layout_width="match_parent"

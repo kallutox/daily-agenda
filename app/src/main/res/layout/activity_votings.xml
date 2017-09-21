@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ksk.daily_agenda.Votings">
+
+    <LinearLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp">
+
+            <Button
+                android:id="@+id/create_voting"
+                android:textColor="@color/white"
+                android:background="@color/DAcolor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/createVoting" />
+        </LinearLayout>
+        <ListView
+            android:id="@+id/voting_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -48,13 +48,13 @@ public class Me extends AppCompatActivity {
         finances.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(),Finances.class);
+                startActivity(intent);
             }
         });
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
     }

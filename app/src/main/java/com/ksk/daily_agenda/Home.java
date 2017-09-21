@@ -8,23 +8,23 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.StringTokenizer;
 
 public class Home extends AppCompatActivity {
-    Button homeButton1;
-    Button homeButton2;
+    private TextView nameDisplay;
+    private Button meButton;
+    private Button groupsButton;
     public static final int REQUEST_CODE = 2;
+    public static final String GETGROUP_CODE = "getgroupscode";
     static long ID;
-    SharedPreferences sP;
+    private SharedPreferences sP;
     private boolean initialized;
     private static ArrayList<Group> groups = new ArrayList<>();
 
@@ -52,21 +52,26 @@ public class Home extends AppCompatActivity {
             startActivityForResult(intent,REQUEST_CODE);
         }
         Home.ID = sP.getLong(getResources().getString(R.string.settings_ID),-1);
-        homeButton2 = (Button) findViewById(R.id.home_button2);
-        homeButton2.setEnabled(false);
-        homeButton2.setBackgroundColor(getResources().getColor(R.color.red));
+        groupsButton = (Button) findViewById(R.id.home_button2);
+        groupsButton.setEnabled(false);
+        groupsButton.setBackgroundColor(getResources().getColor(R.color.red));
     }
 
     private void setupUI(){
-        homeButton1 = (Button) findViewById(R.id.home_button1);
-        homeButton1.setOnClickListener(new View.OnClickListener() {
+        String name = sP.getString(getResources().getString(R.string.settings_name),"user");
+        nameDisplay = (TextView) findViewById(R.id.name_display);
+        if(name != null) {
+            nameDisplay.setText(name);
+        }
+        meButton = (Button) findViewById(R.id.home_button1);
+        meButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Me.class);
                 startActivity(intent);
             }
         });
-        homeButton2.setOnClickListener(new View.OnClickListener() {
+        groupsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Groups.class);
@@ -86,18 +91,17 @@ public class Home extends AppCompatActivity {
                 out.println("login " + sP.getLong(getResources().getString(R.string.settings_ID),-1));
                 out.flush();
                 boolean isLoggedIn = in.readLine().equals("ok");
-                out.close();
-                in.close();
-                socket.close();
                 if(isLoggedIn)
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        homeButton2.setEnabled(true);
-                        homeButton2.setBackgroundColor(getResources().getColor(R.color.DAcolor));
-                        getGroups();
+                        groupsButton.setEnabled(true);
+                        groupsButton.setBackgroundColor(getResources().getColor(R.color.DAcolor));
                     }
                 });
+                out.close();
+                in.close();
+                socket.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -117,32 +121,12 @@ public class Home extends AppCompatActivity {
         editor.putLong(getResources().getString(R.string.settings_ID),ID);
         editor.putString(getResources().getString(R.string.settings_name),name);
         editor.apply();
+        setupPreConnection();
+        new Connector().execute();
+        setupUI();
     }
 
-    private void getGroups(){
-        try {
-            out.println("getGroups");
-            out.flush();
-            String line = in.readLine();
-            while (!line.equals("end")){
-                LinkedList<String> arguments = new LinkedList<String>();
-                ArrayList<String> members = new ArrayList<String>();
-                StringTokenizer sT = new StringTokenizer(line, " ");
-                while(sT.hasMoreTokens()){
-                    arguments.add(sT.nextToken());
-                }
-                long ID = Long.parseLong(arguments.get(1));
-                for(int i=2; i<arguments.size(); i++){
-                    members.add(arguments.get(i));
-                }
-                Group group = new Group(arguments.get(0), ID, members);
-                groups.add(group);
-                line = in.readLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public static ArrayList<Group> getGroupList() {
         return groups;
