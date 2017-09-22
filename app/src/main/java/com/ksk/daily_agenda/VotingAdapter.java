@@ -16,8 +16,6 @@ import java.util.ArrayList;
  * Created by Stefan on 21.09.2017.
  */
 
-//benutzte diese Seite für erstellen des customized ArrayAdapter https://devtut.wordpress.com/2011/06/09/custom-arrayadapter-for-a-listview-android/
-
 public class VotingAdapter extends ArrayAdapter<String>{
     private ArrayList<String> choices;
     private Context context;
@@ -34,7 +32,6 @@ public class VotingAdapter extends ArrayAdapter<String>{
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View v = convertView;
-
         if (v == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.vote_list_item, null);

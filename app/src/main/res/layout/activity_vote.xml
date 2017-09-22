@@ -23,8 +23,18 @@
         <ListView
             android:id="@+id/vote_choices"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp">
         </ListView>
+        <Button
+            android:id="@+id/vote_commit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@color/DAcolor"
+            android:textColor="@color/white"
+            android:text="@string/vote_commit"/>
     </LinearLayout>
 
 </RelativeLayout>

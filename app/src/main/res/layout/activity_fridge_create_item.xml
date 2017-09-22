@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="30dp"
+    tools:context="com.ksk.daily_agenda.FridgeCreateItem">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/fridgeme_item_create_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/fridge_item_create_name"/>
+        <NumberPicker
+            android:id="@+id/fridgeme_item_create_numPick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </NumberPicker>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+            <Button
+                android:id="@+id/fridge_item_create_finish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/DAcolor"
+                android:textColor="@color/white"
+                android:text="@string/fridge_item_add" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

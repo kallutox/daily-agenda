@@ -91,7 +91,7 @@ public class CreateGroup extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getApplicationContext(), "samsing went rong", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_LONG).show();
                     }
                 });
             }

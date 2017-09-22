@@ -8,25 +8,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="10">
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical">
         <Button
+            android:id="@+id/fridgeme_item_add"
+            android:layout_marginBottom="30dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="@string/increase"/>
-        <Button
+            android:layout_height="wrap_content"
+            android:background="@color/DAcolor"
+            android:textColor="@color/white"
+            android:text="@string/fridge_item_add"/>
+        <ListView
+            android:id="@+id/fridgeme_item_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="@string/decrease"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="4"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"/>
+            android:layout_height="wrap_content"></ListView>
     </LinearLayout>
 </RelativeLayout>

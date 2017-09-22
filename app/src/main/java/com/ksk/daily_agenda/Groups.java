@@ -21,12 +21,14 @@ import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class Groups extends AppCompatActivity {
+    public static final int REQUEST_CODE = 1;
+    public static final String GROUPNAME_CODE = "groupnamecode";
+    public static final String GROUPID_CODE = "groupidcode";
+
     private ArrayList<Group> groupArray = new ArrayList<Group>();
     private ArrayAdapter adapter;
     private Button createGroup;
     private ListView groupList;
-    public static final int REQUEST_CODE = 1;
-    public static final String GROUPNAME_EXTRA = "groupActivityExtra";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,8 @@ public class Groups extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(),GroupActivity.class);
-                intent.putExtra(GROUPNAME_EXTRA, groupArray.get(position).toString());
+                intent.putExtra(GROUPNAME_CODE, groupArray.get(position).getName());
+                intent.putExtra(GROUPID_CODE, groupArray.get(position).getID());
                 startActivity(intent);
             }
         });

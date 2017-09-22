@@ -26,6 +26,16 @@ public class Voting {
         }
     }
 
+    public Voting(String name, ArrayList<String> choices, int internVoteCount, int[] votes, int voteCount){
+        this.name = name;
+        this.internVoteCount = internVoteCount;
+        this.choices = choices;
+        this.votes = votes;
+        this.voteCount = voteCount;
+        standings = new double[choices.size()];
+        calcStandings();
+    }
+
     public void voteFor(int index){
         if(internVoteCount < 2){
             internVoteCount++;
@@ -49,6 +59,14 @@ public class Voting {
         return formattedStandings;
     }
 
+    public int getVoteCount(){
+        return voteCount;
+    }
+
+    public int getInternVoteCount(){
+        return internVoteCount;
+    }
+
     public int[] getVotes(){
         return votes;
     }
@@ -57,18 +75,10 @@ public class Voting {
         return choices;
     }
 
-    public void setStandings(int[] votes){
-        if(votes.length == choices.size()){
-            this.votes = votes;
-            int sum = 0;
-            for(int i=0; i<votes.length; i++){
-                sum += votes[i];
-            }
-            voteCount = sum;
-            if(voteCount != 0){
-                calcStandings();
-            }
-        }
+    public void setVotingData(int internVoteCount, int[] votes, int voteCount){
+        this.internVoteCount = internVoteCount;
+        this.votes = votes;
+        this.voteCount = voteCount;
     }
 
     @Override

@@ -20,7 +20,7 @@
         tools:layout_editor_absoluteX="8dp"
         android:orientation="vertical"
         android:gravity="center"
-        android:weightSum="7">
+        android:weightSum="6">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,23 +36,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/notes" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:layout_editor_absoluteY="8dp"
-            tools:layout_editor_absoluteX="8dp">
-
-            <Button
-                android:id="@+id/me_calendar"
-                android:textColor="@color/white"
-                android:background="@color/DAcolor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/voting" />
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

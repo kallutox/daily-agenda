@@ -8,13 +8,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class GroupActivity extends AppCompatActivity {
-    TextView groupNameView;
-    Button notes;
-    Button voting;
-    Button fridge;
-    Button finances;
-    Button map;
-    Intent intent;
+    private TextView groupNameView;
+    private Button voting;
+    private Intent intent;
+    private long ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,43 +22,17 @@ public class GroupActivity extends AppCompatActivity {
     private void setupUI(){
         intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String groupName = bundle.getString(Groups.GROUPNAME_EXTRA);
+        String groupName = bundle.getString(Groups.GROUPNAME_CODE);
+        ID = bundle.getLong(Groups.GROUPID_CODE);
         groupNameView = (TextView) findViewById(R.id.groupname_display);
         groupNameView.setText(groupName);
-        notes = (Button) findViewById(R.id.group_notes);
         voting = (Button) findViewById(R.id.group_voting);
-        fridge = (Button) findViewById(R.id.group_fridge);
-        finances = (Button) findViewById(R.id.group_finances);
-        map = (Button) findViewById(R.id.group_map);
-        notes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         voting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Votings.class);
+                intent.putExtra(Groups.GROUPID_CODE, ID);
                 startActivity(intent);
-            }
-        });
-        fridge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        finances.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
     }

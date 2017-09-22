@@ -33,6 +33,7 @@
     <string name="createVoting_name">Name der Abstimmung</string>
     <string name="createVoting_choice_hint">Antwortmöglichkeit eingeben</string>
     <string name="createVoting_choice_add">Antwort hinzufügen</string>
+    <string name="vote_commit">Abstimmen!</string>
 
     <string name="header_notes">Notizen</string>
     <string name="add_note_hint">Neue Notiz</string>
@@ -46,4 +47,7 @@
     <string name="finances_button_add">Hinzufügen</string>
     <string name="finances_button_withdraw">Abziehen</string>
     <string name="finances_last_revenues_text">Deine letzten Umsätze:</string>
+
+    <string name="fridge_item_add">Item hinzufügen</string>
+    <string name="fridge_item_create_name">Bitte Itemnamen eingeben...</string>
 </resources>

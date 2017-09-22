@@ -18,6 +18,14 @@ public class Group implements Serializable {
         this.members = members;
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public long getID(){
+        return ID;
+    }
+
     @Override
     public String toString() {
         return name + "@" + String.valueOf(ID);

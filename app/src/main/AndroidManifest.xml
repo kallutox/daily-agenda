@@ -27,7 +27,9 @@
         <activity android:name=".Votings" />
         <activity android:name=".CreateVoting" />
         <activity android:name=".Vote" />
-        <activity android:name=".Finances"/>
+        <activity android:name=".Finances" />
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".FridgeCreateItem"></activity>
     </application>
 
 </manifest>
