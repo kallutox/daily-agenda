@@ -21,7 +21,7 @@ public class FinancesAdapter extends ArrayAdapter<FinanceItem>{
     public FinancesAdapter(Context context, ArrayList<FinanceItem> financeItems){
         super(context, R.layout.activity_finance_list, financeItems);
         this.context = context;
-        this.financeList = financeList;
+        this.financeList = financeItems;
     }
 
     @Override

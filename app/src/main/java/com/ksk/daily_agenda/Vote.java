@@ -1,8 +1,9 @@
 package com.ksk.daily_agenda;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -70,5 +71,13 @@ public class Vote extends AppCompatActivity {
         int voteCount = bundle.getInt(Votings.VOTEVOTECOUNT_CODE);
         position = bundle.getInt(Votings.VOTEPOSITION_CODE);
         voting = new Voting(name, choices, internVoteCount, votes, voteCount);
+    }
+
+    private class commitVotingTask extends AsyncTask{
+
+        @Override
+        protected Object doInBackground(Object[] params) {
+            return null;
+        }
     }
 }

@@ -30,4 +30,9 @@ public class FridgeItem {
             pieces--;
         }
     }
+
+    @Override
+    public String toString() {
+        return name + ": "+pieces;
+    }
 }

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class FridgeItemAdapter extends ArrayAdapter {
     private ArrayList<FridgeItem> fridgeList;
     private Context context;
+    private FridgeMeDB db;
 
     public FridgeItemAdapter(@NonNull Context context, ArrayList<FridgeItem> fridgeList) {
         super(context, R.layout.fridge_list_item, fridgeList);
@@ -34,6 +35,8 @@ public class FridgeItemAdapter extends ArrayAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.fridge_list_item, null);
         }
+        db = new FridgeMeDB(context);
+        db.open();
         final FridgeItem item = fridgeList.get(position);
         if(item != null){
             Button decrease = (Button) v.findViewById(R.id.fridge_item_decrease);
@@ -47,6 +50,7 @@ public class FridgeItemAdapter extends ArrayAdapter {
                 public void onClick(View v) {
                     item.decrease();
                     piecesDisplay.setText(""+item.getPieces());
+                    db.setPieces(item);
                 }
             });
             increase.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +58,7 @@ public class FridgeItemAdapter extends ArrayAdapter {
                 public void onClick(View v) {
                     item.increase();
                     piecesDisplay.setText(""+item.getPieces());
+                    db.setPieces(item);
                 }
             });
         }

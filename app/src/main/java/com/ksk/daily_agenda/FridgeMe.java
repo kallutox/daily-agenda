@@ -15,12 +15,20 @@ public class FridgeMe extends AppCompatActivity {
     private Button addItem;
     private ListView itemList;
     private FridgeItemAdapter adapter;
+    private FridgeMeDB dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fridge_me);
+        setupDataBase();
         setupUI();
+        updateFridgeList();
+    }
+
+    private void setupDataBase(){
+        dataBase = new FridgeMeDB(this);
+        dataBase.open();
     }
 
     private void setupUI(){
@@ -35,6 +43,14 @@ public class FridgeMe extends AppCompatActivity {
         });
         adapter = new FridgeItemAdapter(getApplicationContext(),fridgeList);
         itemList.setAdapter(adapter);
+        updateFridgeList();
+    }
+
+    private void updateFridgeList(){
+        fridgeList.clear();
+        fridgeList = dataBase.getAllFridgeItems();
+        adapter = new FridgeItemAdapter(getApplicationContext(),fridgeList);
+        itemList.setAdapter(adapter);
     }
 
     @Override
@@ -43,7 +59,7 @@ public class FridgeMe extends AppCompatActivity {
         Bundle bundle = data.getExtras();
         String name = bundle.getString(FridgeCreateItem.FRIDGEMENAME__CODE);
         int pieces = bundle.getInt(FridgeCreateItem.FRIDGEMENUMPICK_CODE);
-        fridgeList.add(new FridgeItem(name,pieces));
-        adapter.notifyDataSetChanged();
+        dataBase.insertFridgeItem(new FridgeItem(name,pieces));
+        updateFridgeList();
     }
 }
